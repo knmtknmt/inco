@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{name}}</title>
+    </head>
+    <a href="/logout">ログアウトする</a>
+    <body>
+    <!--{% if name == "kiyokiyo" %}
+        <h1>スペシャル{{name}}神社</h1>
+        {% elif name %}
+        <h1>{{name}}神社</h1>
+        {% else %}
+        <h1>ただの神社</h1>
+        {% endif %} -->
+
+        {% if name == "kiyokiyo" %}
+        <h1>スペシャル{{name}}神社</h1>
+        {% elif name %}
+        <h1>{{name}}在庫管理</h1>
+        {% else %}
+        <h1>名無しの在庫管理</h1>
+        {% endif %}
+
+
+    <!-- <img src="/static/images/torii.jpg" alt="鳥居" width="50%" height="50%"> -->
+    <img src="/static/images/souko_building.png" alt="鳥居" width="50%" height="50%">
+
+    <!-- <form action="/add" method="post">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="body" placeholder="body">
+        <input type="submit" value="Add">
+    </form>
+
+    <form action="/update" method="post" id="update">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="body" placeholder="body">
+        <input type="submit" value="Update">
+    </form>
+    <form action="/delete" method="post" id="delete">
+        <input type="submit" value="Delete Selected All Onegai">
+    </form>
+        {% for onegai in all_onegai %}
+        <div>
+            <input type="radio" name="update" form="update" value={{onegai.id}}>
+            <input type="checkbox" name="delete" form="delete" value={{onegai.id}}>
+            {{onegai.title}}：{{onegai.body}}（{{onegai.date}}）
+        </div>
+        {% endfor %} 
+
+        <form action="/add" method="post">
+            <input type="text" name="title" placeholder="title">
+            <input type="text" name="body" placeholder="body">
+            <input type="submit" value="Add">
+        </form>
+    
+        <form action="/update" method="post" id="update">
+            <input type="text" name="title" placeholder="title">
+            <input type="text" name="body" placeholder="body">
+            <input type="submit" value="Update">
+        </form>
+
+        <form action="/delete" method="post" id="delete">
+            <input type="submit" value="Delete Selected All Onegai">
+        </form>
+        
+            {% for onegai in all_onegai %}
+            <div>
+                <input type="radio" name="update" form="update" value={{onegai.id}}>
+                <input type="checkbox" name="delete" form="delete" value={{onegai.id}}>
+                {{onegai.title}}：{{onegai.body}}（{{onegai.date}}）
+            </div>
+            {% endfor %} -->
+        
+            <form action="/additem1" method="post">
+                <!-- <input type="text" name="title" placeholder="カテゴリ"> -->
+                    <select name="title">
+                    <option value="風呂">風呂</option>
+                    <option value="トイレ">トイレ</option>
+                    <option value="キッチン">キッチン</option>
+                    <option value="リビング">リビング</option>
+                    <option value="その他">その他</option>
+                    </select>
+                <input type="text" name="body1" placeholder="商品名">
+                <!-- <input type="text" name="body2" placeholder="ステータス"> -->
+                <select name="body2">
+                    <option value="在庫">在庫</option>
+                    <option value="在庫切れ">在庫切れ</option>
+                    <option value="発注">発注</option>
+                    </select>
+                <input type="submit" value="品目登録">
+            </form>
+
+        <form action="/iupdate" method="post" id="iupdate">
+            <select name="body2">
+                <option value="在庫">在庫</option>
+                <option value="在庫切れ">在庫切れ</option>
+                <option value="発注">発注</option>
+            </select>
+            <input type="submit" value="◉の品目を更新">
+        </form>
+
+        <form action="/idelete" method="post" id="idelete">
+            <input type="submit" value="☑️の品目を全部削除">
+        </form>
+
+            {% for inco in all_inco %}
+            <div>
+                <input type="radio" name="iupdate" form="iupdate" value={{inco.id}}>
+                <input type="checkbox" name="idelete" form="idelete" value={{inco.id}}>
+                {{inco.title}}：{{inco.body1}} {{inco.body2}}（{{inco.date}}）（{{inco.udu}}）
+            </div>
+            {% endfor %}
+
+    </body>
+</html>
